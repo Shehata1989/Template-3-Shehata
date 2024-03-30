@@ -1,0 +1,128 @@
+@mixin btn-shape {
+  display: block;
+  width: fit-content;
+  color: white;
+  padding: 4px 10px;
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 14px;
+  border: none;
+  overflow: none;
+}
+
+/// Start Reset Element
+@mixin reset-ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+@mixin reset-links {
+
+  width: fit-content;
+  text-decoration: none;
+  color: black;
+  transition: 0.3s;
+}
+@mixin reset-input {
+  border: none;
+  outline: none;
+  border-radius: 6px;
+}
+/// End Reset Element
+/// Start Centring Element
+///Flex-Box
+@mixin between-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+@mixin flex-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+///Grid-System
+@mixin grid-1-col {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr);
+  gap: 10px;
+}
+@mixin grid-3-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+@mixin grid-4-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+@mixin grid-c {
+  display: grid;
+  place-items: center;
+}
+/// Position
+@mixin position-c {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin position-x-c {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@mixin position-y-c {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/// End Centring Element
+/// Start Border-box
+@mixin border-1 {
+  border: 1px solid #ddd;
+}
+@mixin border-radius-10 {
+  border-radius: 10px;
+}
+@mixin circle-radius {
+  border-radius: 50%;
+}
+@mixin box-shadow {
+  box-shadow: 0 0 10px #c7c6c6;
+}
+/// End Border-Box
+/// Start Media queries
+@mixin media($point) {
+  @if $point == small-mobile {
+    @media (max-width: 567px) {
+      @content;
+    }
+  } @else if $point == mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $point == up-mobile {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $point == down-medium {
+    @media (max-width: 991px) {
+      @content;
+    }
+  } @else if $point == medium1 {
+    @media (min-width: 992px) {
+      @content;
+    }
+  } @else if $point == large1 {
+    @media (max-width: 1199px) {
+      @content;
+    }
+  }
+}
+// container Media Query
+
+/// End Media queries

@@ -1,0 +1,68 @@
+/*! Fonts Google*/
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@683&display=swap");
+
+/*! End Fonts Google*/
+/*! Global Rules*/
+
+// <!-- Normalize Css -->
+// <link rel="stylesheet" href="css/normalize.css" />
+// <!-- Font-Awesome -->
+// <link rel="stylesheet" href="css/all.min.css" />
+// <!-- Main Css -->
+// <link rel="stylesheet" href="css/courses.css" />
+
+* {
+  box-sizing: border-box;
+  transition: $main-transition;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(47, 47, 250);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(75, 75, 238);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "cairo", sans-serif;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+/*! End Global Rules*/

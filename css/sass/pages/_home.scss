@@ -1,0 +1,1237 @@
+.page .landing {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #ececec;
+    transform: skewY(-6deg);
+    transform-origin: top left;
+    z-index: -1;
+  }
+  .container {
+    @include between-flex;
+    min-height: calc(100vh - 72px);
+    .text {
+      @include media(mobile) {
+        text-align: center;
+        font-size: $f-16;
+      }
+      flex: 1;
+      max-width: 500px;
+      h2 {
+        font-size: 40px;
+        font-weight: bold;
+        margin: 0;
+      }
+      p {
+        color: rgb(53, 51, 51);
+        line-height: 1.5;
+      }
+    }
+    img {
+      @include media(mobile) {
+        display: none;
+      }
+      max-width: 500px;
+      transform: translateY(-50px);
+      animation: bouncing 3s linear infinite;
+    }
+  }
+  a {
+    @include reset-links;
+    display: block;
+    font-size: 13px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    color: $main-color;
+    i {
+      animation: go-down 2s infinite;
+    }
+  }
+}
+.page .articles {
+  padding-top: 20px;
+  padding-bottom: 100px;
+  h1 {
+    @extend %main-title;
+  }
+  .container {
+    .content-articles {
+      @include grid-4-col;
+      @for $i from 1 through 8 {
+        .box-#{$i} {
+          @include box-shadow;
+          @include border-radius-10;
+          img {
+            @include border-radius-10;
+            max-width: 100%;
+          }
+          h2 {
+            padding-left: 20px;
+            margin: 0;
+            margin-top: 20px;
+          }
+          p {
+            color: $text-color;
+            font-size: $f-16;
+            padding: 20px;
+            margin: 0;
+          }
+          .info {
+            @include between-flex;
+            padding: 20px 20px;
+            color: $main-color;
+            border-top: 1px solid #ddd;
+            a {
+              @include reset-links;
+              color: $main-color;
+            }
+          }
+          &:hover i {
+            animation: icons 0.5s infinite;
+          }
+          &:hover {
+            transform: translateY(-5px);
+          }
+        }
+      }
+    }
+  }
+}
+.page .gallery {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: $section-background;
+  position: relative;
+  .spikes {
+    width: 100%;
+    height: 15px;
+    background-image: linear-gradient(135deg, white 25%, transparent 25%),
+      linear-gradient(225deg, white 25%, transparent 25%);
+    background-size: 30px 30px;
+    position: absolute;
+    top: 0;
+  }
+  h1 {
+    @extend %main-title;
+    z-index: 1;
+  }
+  .container {
+    @include grid-3-col;
+    @for $i from 1 through 6 {
+      .box-#{$i} {
+        padding: 15px;
+        background-color: white;
+        @include box-shadow;
+        position: relative;
+        overflow: hidden;
+        .image {
+          overflow: hidden;
+          &::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(white, $alpha: 0.4);
+            opacity: 0;
+            z-index: 1;
+          }
+          &:hover img {
+            transform: rotate(5deg) scale(1.1);
+          }
+          img {
+            max-width: 100%;
+          }
+        }
+        &:hover .image::before {
+          animation: flash 0.8s;
+        }
+      }
+    }
+  }
+}
+.page .features {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: white;
+  position: relative;
+  h1 {
+    @extend %main-title;
+    z-index: 1;
+  }
+  .container {
+    @include grid-3-col;
+    @for $i from 1 through 3 {
+      .box-#{$i} {
+        text-align: center;
+        @include box-shadow;
+        &:hover .img::after {
+          border-width: 170px 500px 170px 0;
+        }
+        .img {
+          position: relative;
+          overflow: hidden;
+          &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+          }
+          &::after {
+            content: "";
+            border-width: 0 0 170px 500px;
+            border-style: solid;
+            border-color: transparent transparent white transparent;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transition: $main-transition;
+          }
+          img {
+            max-width: 100%;
+          }
+        }
+        h2 {
+          width: fit-content;
+          margin: auto;
+          font-size: 40px;
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: $red-color;
+            width: calc(100% - 20px);
+            height: 4px;
+          }
+        }
+        p {
+          padding: 15px;
+          line-height: 1.8;
+          color: $text-color;
+        }
+        a {
+          @include reset-links;
+          @include border-radius-10;
+          display: block;
+          padding: 10px 30px;
+          margin: 0 auto 20px;
+          font-weight: bold;
+          font-size: $f-18;
+        }
+      }
+    }
+    .box-1 {
+      &:hover a {
+        background-position: left bottom;
+        color: white;
+        border: 2px solid white;
+      }
+      .img {
+        &::before {
+          background-color: rgba($red-color, $alpha: 0.6);
+        }
+        img {
+        }
+      }
+      h2 {
+        &::before {
+          background-color: $red-color;
+          width: calc(100% - 20px);
+          height: 4px;
+        }
+      }
+      p {
+      }
+      a {
+        color: $red-color;
+        border: 2px solid $red-color;
+        background: linear-gradient(to right, #f44036 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+      }
+    }
+    .box-2 {
+      &:hover a {
+        background-position: left bottom;
+        color: white;
+        border: 2px solid white;
+      }
+      .img {
+        &::before {
+          background-color: rgba($green-color, $alpha: 0.6);
+        }
+        img {
+        }
+      }
+      h2 {
+        &::before {
+          background-color: $green-color;
+          width: calc(100% - 20px);
+          height: 4px;
+        }
+      }
+      p {
+      }
+      a {
+        color: $green-color;
+        border: 2px solid $green-color;
+        background: linear-gradient(to right, $green-color 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+      }
+    }
+    .box-3 {
+      &:hover a {
+        background-position: left bottom;
+        color: white;
+        border: 2px solid white;
+      }
+      .img {
+        &::before {
+          background-color: rgba($blue-color, $alpha: 0.6);
+        }
+        img {
+        }
+      }
+      h2 {
+        &::before {
+          background-color: $blue-color;
+          width: calc(100% - 20px);
+          height: 4px;
+        }
+      }
+      p {
+      }
+      a {
+        color: $blue-color;
+        border: 2px solid $blue-color;
+        background: linear-gradient(to right, $blue-color 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+      }
+    }
+  }
+}
+.page .testimonials {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: $section-background;
+  position: relative;
+  h1 {
+    @extend %main-title;
+  }
+  .container {
+    @include grid-3-col;
+    @for $i from 1 through 6 {
+      .box-#{$i} {
+        background-color: white;
+        padding: 20px;
+        position: relative;
+        img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          position: absolute;
+          right: 0;
+          top: -50px;
+          border: 5px solid $section-background;
+        }
+        h2 {
+          margin: 0 0 8px;
+        }
+        span.title {
+          font-size: $f-16;
+          color: $text-color;
+        }
+        .rate {
+          margin: 10px 0;
+        }
+        p {
+          font-size: $f-16;
+          color: $text-color;
+          line-height: 1.6;
+        }
+      }
+      .box-1 {
+        i:not(:last-of-type) {
+          color: orange;
+        }
+      }
+      .box-2 {
+        i:not(:last-of-type) {
+          color: orange;
+        }
+      }
+      .box-3 {
+        i:not(:last-of-type) {
+          color: orange;
+        }
+      }
+      .box-4 {
+        i {
+          color: orange;
+        }
+      }
+      .box-5 {
+        i:not(:nth-of-type(n + 4)) {
+          color: orange;
+        }
+      }
+      .box-6 {
+        i:nth-of-type(-n + 3) {
+          color: orange;
+        }
+      }
+    }
+  }
+}
+.page .team {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: white;
+  position: relative;
+  h1 {
+    @extend %main-title;
+  }
+  .container {
+    @include grid-4-col;
+    @for $i from 1 through 8 {
+      .box-#{$i} {
+        @include border-radius-10;
+        padding-top: 50px;
+        position: relative;
+        z-index: 2;
+        &::before {
+          content: "";
+          @include border-radius-10;
+          position: absolute;
+          width: 80%;
+          height: 100%;
+          background-color: #ececec;
+          right: 0;
+          top: 0;
+          z-index: -1;
+          transition: $main-transition;
+        }
+        &::after {
+          content: "";
+          @include border-radius-10;
+
+          position: absolute;
+          width: 0;
+          height: 100%;
+          background-color: #e4e4e4;
+          right: 0;
+          top: 0;
+          z-index: -1;
+          transition: $main-transition;
+        }
+        &:hover::after {
+          width: 80%;
+          background-color: #e4e4e4;
+        }
+        &:hover .info h2 {
+          color: $main-color;
+        }
+        &:hover .img-icons img {
+          filter: grayscale(0);
+        }
+        .img-icons {
+          display: flex;
+          align-items: center;
+          img {
+            width: calc(100% - 60px);
+            @include border-radius-10;
+            filter: grayscale(100%);
+          }
+          .social {
+            width: 60px;
+            @include flex-c;
+            flex-direction: column;
+            gap: 20px;
+            a {
+              @include reset-links;
+              i {
+                color: #777;
+                &:hover {
+                  color: $main-color;
+                }
+              }
+            }
+          }
+        }
+        .info {
+          padding-left: 80px;
+          h2 {
+            margin: 10px 0;
+            color: #777;
+          }
+          span {
+            display: block;
+            margin-bottom: 20px;
+            font-size: $f-16;
+            color: #777;
+          }
+        }
+      }
+    }
+  }
+}
+.page .services {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: $section-background;
+  h1 {
+    @extend %main-title;
+  }
+  .container {
+    @include grid-3-col;
+    @for $i from 1 through 6 {
+      .box-#{$i} {
+        counter-increment: services;
+        background-color: white;
+        position: relative;
+        &:hover {
+          transform: translateY(-10px);
+        }
+        &:hover::after {
+          width: 100%;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: -2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 3px;
+          background-color: $main-color;
+          transition: $main-transition;
+        }
+        i {
+          display: block;
+          text-align: center;
+          margin: 30px 0;
+          color: #d5d5d5;
+        }
+        p {
+          font-size: 25px;
+          color: $main-color;
+          text-align: center;
+          margin-bottom: 30px;
+        }
+        .info {
+          position: relative;
+          background-color: #f9f9f9;
+          padding: 20px;
+          display: flex;
+          justify-content: end;
+          align-items: center;
+          &::after {
+            content: "0" counter(services);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 85px;
+            height: 100%;
+            color: white;
+            background-color: $main-color;
+            @include flex-c;
+            font-size: 24px;
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 100%;
+            left: 70px;
+            top: 0;
+            background-color: #d5d5d5;
+            transform: skewX(-25deg);
+            z-index: 1;
+          }
+          a {
+            @include reset-links;
+            color: $main-color;
+            font-size: 14px;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+}
+.page .our-skills {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: white;
+  h1 {
+    @extend %main-title;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    img {
+      @include media(mobile) {
+        display: none;
+      }
+      max-width: 100%;
+    }
+    .skills {
+      flex: 1;
+      .skill {
+        margin-bottom: 20px;
+        h2 {
+          font-size: $f-16;
+          margin: 0 0 10px;
+        }
+        .the-progress {
+          background-color: #eee;
+          width: 100%;
+          height: 25px;
+          span {
+            display: block;
+            height: 100%;
+            background-color: $main-color;
+            position: relative;
+            &::before {
+              content: attr(data-attr);
+              position: absolute;
+              top: -35px;
+              right: -21px;
+              font-size: 13px;
+              @include flex-c;
+              padding: 5px 10px;
+              color: $main-color;
+              background-color: #ececec;
+            }
+            &::after {
+              content: "";
+              position: absolute;
+              border-width: 8px;
+              border-style: solid;
+              border-color: #ececec transparent transparent transparent;
+              right: -8px;
+              top: -11px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.page .work-steps {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: $section-background;
+  h1 {
+    @extend %main-title;
+  }
+  .container {
+    @include between-flex;
+    justify-content: start;
+    gap: 100px;
+    img {
+      @include media(down-medium) {
+        display: none;
+      }
+      margin-right: 20px;
+    }
+    .info {
+      flex: 1;
+      .box {
+        @include media(mobile) {
+          text-align: center;
+        }
+        @include between-flex;
+        justify-content: start;
+        background-color: #f6f5f5;
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 3px solid white;
+        @include border-radius-10;
+        position: relative;
+        z-index: 2;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #ededed;
+          z-index: -1;
+          transition: $main-transition;
+        }
+        &:hover::before {
+          background-color: $section-background;
+          width: 100%;
+          height: 100%;
+        }
+        img {
+          width: 64px;
+          height: 64px;
+        }
+        .text {
+          h2 {
+            margin: 0;
+          }
+          p {
+            color: $text-color;
+            line-height: 1.8;
+            font-size: $f-16;
+          }
+        }
+      }
+    }
+  }
+}
+.page .events {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: white;
+  position: relative;
+  h1 {
+    @extend %main-title;
+  }
+  img.dots-up {
+    @include media(mobile) {
+      display: none;
+    }
+    position: absolute;
+    color: $main-color;
+    right: 0;
+    top: 200px;
+  }
+  img.dots-down {
+    @include media(mobile) {
+      display: none;
+    }
+    position: absolute;
+    color: $main-color;
+    bottom: 180px;
+    left: 0;
+  }
+  .container {
+    @include between-flex;
+    flex-wrap: wrap;
+    img {
+      @include media(mobile) {
+        display: none;
+      }
+      max-width: 450px;
+    }
+    .info {
+      flex: 1;
+      .time {
+        @include flex-c;
+        gap: 15px;
+        .unit {
+          border-radius: 6px;
+          border: 1px solid #d4d4d4;
+          width: 73px;
+          span:first-of-type {
+            display: block;
+            width: 40px;
+            padding: 15px;
+            color: $main-color;
+            font-size: 35px;
+          }
+          span:last-of-type {
+            display: block;
+            font-size: $f-16;
+            padding: 15px;
+            border-top: 1px solid #d4d4d4;
+            font-size: 13px;
+            font-weight: 400;
+          }
+        }
+      }
+      h2 {
+        text-align: center;
+      }
+      p {
+        text-align: center;
+        color: $text-color;
+        line-height: 1.8;
+        margin: 0;
+      }
+    }
+    .subscribe {
+      @include media(mobile) {
+        padding: 0;
+      }
+      padding: 20px;
+      margin: 0 auto;
+      border-radius: 30px;
+      @include flex-c;
+      form {
+        @include media(mobile) {
+          max-width: 100%;
+          padding: 10px 15px;
+        }
+        @include between-flex;
+        background-color: #f6f5f5;
+        padding: 30px 40px;
+        border-radius: 30px;
+        input[type="email"] {
+          @include media(mobile) {
+            width: 200px;
+          }
+          width: 450px;
+          border-radius: 30px;
+          padding: 20px;
+          outline: none;
+          border: none;
+        }
+        button {
+          @include reset-input;
+          background-color: $main-color;
+          color: white;
+          padding: 20px;
+          border-radius: 30px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.page .pricing {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: $section-background;
+  position: relative;
+  img.dots-up {
+    @include media(mobile) {
+      display: none;
+    }
+    position: absolute;
+    color: $main-color;
+    right: 0;
+    top: 200px;
+  }
+  img.dots-down {
+    @include media(mobile) {
+      display: none;
+    }
+    position: absolute;
+    color: $main-color;
+    bottom: 180px;
+    left: 0;
+  }
+  h1 {
+    @extend %main-title;
+  }
+  .container {
+    @include grid-3-col;
+    .advanced {
+      position: relative;
+      top: -20px;
+      &:hover .label::before {
+        border-color: transparent transparent #f6f6f6;
+      }
+      .label {
+        position: absolute;
+        right: 20px;
+        top: 0;
+        writing-mode: vertical-rl;
+        background-color: $main-color;
+        color: white;
+        padding: 10px 10px 30px;
+        font-size: 20px;
+        &::before {
+          left: -4px;
+          content: "";
+          position: absolute;
+          border-width: 25px;
+          border-style: solid;
+          border-color: transparent transparent white;
+          top: 106px;
+          transition: $main-transition;
+          transition-delay: 0.2s;
+        }
+      }
+    }
+    .basic,
+    .advanced,
+    .professional {
+      position: relative;
+      background-color: white;
+      z-index: 1;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 50%;
+        background-color: #f6f6f6;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        transition: $main-transition;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 50%;
+        bottom: 0;
+        right: 0;
+        background-color: #f6f6f6;
+        z-index: -1;
+        transition: $main-transition;
+      }
+      &:hover::after {
+        width: 100%;
+      }
+      &:hover::before {
+        width: 100%;
+      }
+      @include box-shadow;
+
+      h3 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      img {
+        display: block;
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 30px;
+      }
+      .price {
+        text-align: center;
+        span:first-of-type {
+          display: block;
+          color: $main-color;
+          font-size: 70px;
+          font-weight: bold;
+        }
+        span:last-of-type {
+          display: block;
+          font-size: 13px;
+          color: $text-color;
+          margin-bottom: 30px;
+        }
+      }
+      ul.info {
+        @include reset-ul;
+        li {
+          padding: 20px;
+          font-size: 13px;
+          border-top: 1px solid #ddd;
+          &::before {
+            font-family: "Font Awesome 5 Free";
+            content: "\f00c";
+            font-weight: 900;
+            margin-right: 20px;
+            color: $main-color;
+          }
+        }
+      }
+      a {
+        @include reset-links;
+        @include border-radius-10;
+        display: block;
+        color: $main-color;
+        padding: 10px 15px;
+        margin: 30px auto 40px;
+        background-color: white;
+        border: 2px solid $main-color;
+        &:hover {
+          background-color: $main-color;
+          color: white;
+        }
+      }
+    }
+  }
+}
+.page .videos {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: white;
+  position: relative;
+  h1 {
+    @extend %main-title;
+  }
+  .container {
+    .holder {
+      @include media(mobile) {
+        flex-direction: column;
+      }
+      @include between-flex;
+      @include box-shadow;
+      align-items: stretch;
+      gap: 0;
+      .list {
+        min-width: 300px;
+        h3 {
+          @include between-flex;
+          padding: 20px;
+          background-color: #f4f4f4;
+          margin: 0;
+        }
+        ul {
+          @include reset-ul;
+          li {
+            padding: 20px;
+            transition: $main-transition;
+            cursor: pointer;
+            span {
+              display: block;
+              font-size: $f-16;
+              color: $text-color;
+              margin-top: 5px;
+            }
+            &:hover {
+              color: $main-color;
+              background-color: #fafafa;
+            }
+          }
+        }
+      }
+      .preview {
+        @include between-flex;
+        background-color: $section-background;
+        padding: 10px;
+        flex-direction: column;
+        flex: 1;
+        img {
+          max-width: 100%;
+        }
+        p {
+          width: 100%;
+          background-color: white;
+          padding: 20px;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+.page .stats {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-image: url("../Image/stats.jpg");
+  position: relative;
+  z-index: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: -1;
+  }
+  h1 {
+    @extend %main-title;
+  }
+  .container {
+    @include grid-4-col;
+    gap: 40px;
+    @for $i from 1 through 4 {
+      .box-#{$i} {
+        @include box-shadow;
+        background-color: white;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          background-color: $main-color;
+          left: 0;
+          bottom: 0;
+          transition: 1s;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          background-color: $main-color;
+          right: 0;
+          top: 0;
+          transition: 1s;
+        }
+        &:hover:after {
+          width: 2px;
+          height: 100%;
+        }
+        &:hover::before {
+          width: 2px;
+          height: 100%;
+        }
+        i {
+        }
+        span {
+          display: block;
+        }
+        span:first-of-type {
+          margin: 15px 0;
+          font-size: 50px;
+        }
+        span:last-of-type {
+          color: $main-color;
+          font-style: italic;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+.page .discount {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
+  z-index: 1;
+  h1 {
+    @extend %main-title;
+  }
+  .container {
+    @include media(mobile) {
+      flex-direction: column;
+    }
+    display: flex;
+    align-items: center;
+    .image {
+      flex-basis: 50%;
+      position: relative;
+      text-align: center;
+      background-image: url("../Image/discount-background1.jpg");
+      animation: bg 10s linear infinite;
+      z-index: -1;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba($main-color, $alpha: 0.95);
+        z-index: -1;
+      }
+      h2 {
+        font-size: 40px;
+      }
+      p {
+        color: white;
+        line-height: 1.7;
+        max-width: 450px;
+        margin: 10px auto;
+      }
+      img {
+        width: 300px;
+        margin-bottom: 40px;
+      }
+    }
+    .form {
+      @include media(mobile) {
+        padding-top: 30px;
+      }
+      flex-basis: 50%;
+      @include flex-c;
+      form {
+        text-align: center;
+        h2 {
+          font-size: 40px;
+          margin: 0 {
+            bottom: 20px;
+          }
+        }
+        input:not(:last-of-type) {
+          @include reset-input;
+          display: block;
+          width: 100%;
+          background-color: #eee;
+          margin-bottom: 20px;
+          padding: 20px;
+        }
+        textarea {
+          @include reset-input;
+          background-color: #eee;
+          width: 100%;
+          height: 200px;
+          padding: 20px;
+          resize: none;
+        }
+        input[type="submit"] {
+          @include reset-input;
+          display: block;
+          width: 100%;
+          padding: 15px;
+          margin-top: 20px;
+          color: white;
+          cursor: pointer;
+          background-color: $main-color;
+          &:hover {
+            background-color: $main-color-alt;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*Start Ainmations*/
+@keyframes bouncing {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes icons {
+  100% {
+    transform: translateX(10px);
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+@keyframes go-down {
+  20%,
+  30%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40%,
+  60% {
+    transform: translateY(10px);
+  }
+}
+@keyframes bg {
+  0%,
+  100% {
+    background-image: url("../Image/discount-background1.jpg");
+  }
+  50% {
+    background-image: url("../Image/discount-background2.jpg");
+  }
+}
+/*End Ainmations*/
