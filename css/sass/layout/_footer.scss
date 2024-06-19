@@ -90,6 +90,9 @@
     }
   }
   .box:nth-of-type(4) {
+    @media (max-width: 820px) {
+      display: none;
+    }
     flex-basis: 25%;
     img {
       width: 78px;

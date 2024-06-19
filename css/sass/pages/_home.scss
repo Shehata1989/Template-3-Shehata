@@ -69,7 +69,7 @@
           @include box-shadow;
           @include border-radius-10;
           img {
-            @include border-radius-10;
+            border-radius: 10px 10px 0 0;
             max-width: 100%;
           }
           h2 {
@@ -608,7 +608,7 @@
             height: 100%;
             background-color: $main-color;
             position: relative;
-            &::before {
+            &.active::before {
               content: attr(data-attr);
               position: absolute;
               top: -35px;
@@ -619,7 +619,7 @@
               color: $main-color;
               background-color: #ececec;
             }
-            &::after {
+            &.active::after {
               content: "";
               position: absolute;
               border-width: 8px;

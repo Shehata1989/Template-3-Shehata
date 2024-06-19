@@ -168,7 +168,7 @@ body {
       box-shadow: 0 0 10px #c7c6c6;
       border-radius: 10px; }
       .page .articles .container .content-articles .box-1 img {
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
         max-width: 100%; }
       .page .articles .container .content-articles .box-1 h2 {
         padding-left: 20px;
@@ -201,7 +201,7 @@ body {
       box-shadow: 0 0 10px #c7c6c6;
       border-radius: 10px; }
       .page .articles .container .content-articles .box-2 img {
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
         max-width: 100%; }
       .page .articles .container .content-articles .box-2 h2 {
         padding-left: 20px;
@@ -234,7 +234,7 @@ body {
       box-shadow: 0 0 10px #c7c6c6;
       border-radius: 10px; }
       .page .articles .container .content-articles .box-3 img {
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
         max-width: 100%; }
       .page .articles .container .content-articles .box-3 h2 {
         padding-left: 20px;
@@ -267,7 +267,7 @@ body {
       box-shadow: 0 0 10px #c7c6c6;
       border-radius: 10px; }
       .page .articles .container .content-articles .box-4 img {
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
         max-width: 100%; }
       .page .articles .container .content-articles .box-4 h2 {
         padding-left: 20px;
@@ -300,7 +300,7 @@ body {
       box-shadow: 0 0 10px #c7c6c6;
       border-radius: 10px; }
       .page .articles .container .content-articles .box-5 img {
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
         max-width: 100%; }
       .page .articles .container .content-articles .box-5 h2 {
         padding-left: 20px;
@@ -333,7 +333,7 @@ body {
       box-shadow: 0 0 10px #c7c6c6;
       border-radius: 10px; }
       .page .articles .container .content-articles .box-6 img {
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
         max-width: 100%; }
       .page .articles .container .content-articles .box-6 h2 {
         padding-left: 20px;
@@ -366,7 +366,7 @@ body {
       box-shadow: 0 0 10px #c7c6c6;
       border-radius: 10px; }
       .page .articles .container .content-articles .box-7 img {
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
         max-width: 100%; }
       .page .articles .container .content-articles .box-7 h2 {
         padding-left: 20px;
@@ -399,7 +399,7 @@ body {
       box-shadow: 0 0 10px #c7c6c6;
       border-radius: 10px; }
       .page .articles .container .content-articles .box-8 img {
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
         max-width: 100%; }
       .page .articles .container .content-articles .box-8 h2 {
         padding-left: 20px;
@@ -2022,7 +2022,7 @@ body {
             height: 100%;
             background-color: #2196f3;
             position: relative; }
-            .page .our-skills .container .skills .skill .the-progress span::before {
+            .page .our-skills .container .skills .skill .the-progress span.active::before {
               content: attr(data-attr);
               position: absolute;
               top: -35px;
@@ -2034,7 +2034,7 @@ body {
               padding: 5px 10px;
               color: #2196f3;
               background-color: #ececec; }
-            .page .our-skills .container .skills .skill .the-progress span::after {
+            .page .our-skills .container .skills .skill .the-progress span.active::after {
               content: "";
               position: absolute;
               border-width: 8px;
@@ -2773,7 +2773,8 @@ body {
           @media (max-width: 767px) {
             .page header .container nav > ul.main-nav > li > a {
               padding: 0 15px;
-              height: 50px; } }
+              height: 50px;
+              font-size: 14px; } }
           .page header .container nav > ul.main-nav > li > a:hover {
             background-color: #fafafa;
             color: #2196f3; }
@@ -2890,6 +2891,13 @@ body {
         @media (max-width: 767px) {
           .page header .container nav > ul.main-nav li:last-of-type .mega-menu .links-1 li:last-of-type {
             border-bottom: 1px solid #eee; } }
+    .page header .container nav .overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.4); }
 
 .page footer {
   background-color: #191919;
@@ -2971,6 +2979,9 @@ body {
         color: #b9b9b9; }
   .page footer .box:nth-of-type(4) {
     flex-basis: 25%; }
+    @media (max-width: 820px) {
+      .page footer .box:nth-of-type(4) {
+        display: none; } }
     .page footer .box:nth-of-type(4) img {
       width: 78px;
       border: 3px solid white;
